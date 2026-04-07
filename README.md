@@ -2,17 +2,12 @@
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC) [![AI: Code Assist](https://img.shields.io/badge/AI-Code%20Assist-EB9FDA)](https://github.com/features/copilot)
 
-一个简单的 Node.js 工具，用于将 [Flomo](https://flomoapp.com/) 导出的 HTML 笔记文件转换为 [Markdown](https://wikipedia.org/wiki/Markdown) 文件。这个工具可以帮助你将笔记从 Flomo 迁移到任何支持 Markdown 的笔记系统中。
+一个简单的 Node.js 工具，用于将 [Flomo](https://flomoapp.com/) 导出的 HTML 笔记文件转换为 CSV 文件（暂不支持图片）。
 
 ## 特性
 
-- 将 Flomo HTML 导出文件转换为独立的 Markdown 文件
-- 保留原始创建时间戳
-- 保持图片及其目录结构
-- 支持有序列表和无序列表
-- 自动移除空段落
-- 按日期组织文件，同一天的多篇笔记自动编号
-- 其他待完善特性……
+- 将 Flomo HTML 导出文件转换为独立的 CSV 文件，CSV 文件可导入 DayOne 中。
+
 
 ## 环境要求
 
@@ -40,30 +35,12 @@ pnpm install
 ```bash
 node convert.js
 ```
-4. 如果成功，则会生成 `output` 目录，将其复制到任何支持 Markdown 的笔记系统中即可
+4. 如果成功，则会生成 `output` 目录，查看输出即可
 
 脚本将会：
 - 自动检测并使用目录下的第一个 HTML 文件，该文件包含了所有的笔记文字内容
 - 创建 `output` 目录
-- 生成格式为 `memo-YYYY-MM-DD[-n].md` 的 Markdown 文件
-- 将笔记中引用的所有图片复制到对应目录中
-
-## 输出格式
-
-每个 Markdown 文件的结构如下：
-```markdown
-# memo-YYYY-MM-DD
-
-[笔记内容]
-
-Created: YYYY-MM-DD HH:mm:ss
-
-[图片（如果有）]
-```
-
-如果同一天有多篇笔记，将会按顺序编号：
-- `memo-2024-01-27.md`（当天只有一篇笔记时）
-- `memo-2024-01-27-1.md`, `memo-2024-01-27-2.md` 等（当天有多篇笔记时）
+- 生成 CSV 文件
 
 ## 贡献
 
